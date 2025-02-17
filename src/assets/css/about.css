@@ -1,0 +1,294 @@
+@import "style.css";
+
+.about-intro {
+    background: url("../images/Open-Doors-Morocco-About-Us-jpg.webp") no-repeat center center/cover;
+    color: var(--white-color);
+    position: relative;
+    width: 100%;
+    height: 81vh;
+}
+
+.about-intro::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+    top: 0;
+    left: 0;
+}
+
+.about-intro .container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.about-intro .about-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+}
+
+.about-content h1 {
+    font-size: 4rem;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.about-content p {
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+
+.about-content .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    margin-top: 16px;
+}
+
+
+/* About Page Values Section */
+.about-values {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.about-values h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.values-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.values-list li {
+    flex: 1 1 calc(33% - 2rem);
+    background-color: var(--white-color);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.values-list li h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.values-list li p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .values-list li {
+        flex: 1 1 100%;
+    }
+}
+
+
+/* About Page Team Section */
+.about-team {
+    padding: 4rem 2rem;
+    background-color: var(--white-color);
+    text-align: center;
+}
+
+.about-team h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.section-description {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+.team-member {
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.team-member img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.team-member div {
+    margin: 16px auto;
+}
+
+.team-member h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.team-member p {
+    font-size: 1rem;
+    color: #555;
+}
+
+
+/* Mission and Vision Section */
+.about-mission-vision {
+    padding: 5rem 2rem;
+    border-top: 5px solid var(--primary-color);
+    border-bottom: 5px solid var(--primary-color);
+    text-align: center;
+}
+
+.mission-vision-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.mission,
+.vision {
+    background: linear-gradient(135deg, #f4f4f4, #fff);
+    border: 2px solid var(--primary-color);
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 auto;
+}
+
+.mission:hover,
+.vision:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.mission h2,
+.vision h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+.mission p,
+.vision p {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+@media (min-width: 768px) {
+    .mission-vision-content {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .mission,
+    .vision {
+        width: 45%;
+    }
+}
+
+
+/* History Section */
+.about-history {
+    padding: 5rem 2rem;
+    background-color: var(--white-color);
+    text-align: center;
+}
+
+.about-history h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.about-history p {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.history-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.timeline-item {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-item h3 {
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.timeline-item p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+    .history-timeline {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .timeline-item {
+        width: 30%;
+    }
+}

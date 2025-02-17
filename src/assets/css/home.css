@@ -1,0 +1,551 @@
+@import "style.css";
+
+
+/* Start hero section */
+.hero {
+    position: relative;
+    background: url("../images/morocco-desert-camp-2048x682.jpg.webp") no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 1;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.hero .hero-content {
+    text-align: center;
+    padding: 200px 40px;
+}
+
+.hero .hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.hero .hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.hero .hero-content .btn {
+    padding: 15px 30px;
+}
+
+/*End hero section */
+
+/* Start about section */
+.about {
+    padding: 50px 20px;
+}
+
+.about .about-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.about .about-content::before {
+    content: '';
+    position: absolute;
+    background: url("../images/svg/gears-spinner.svg") no-repeat top right;
+    top: 0;
+    right: 0;
+    background-size: contain;
+    width: 100px;
+    height: 100px;
+}
+
+.about .about-content .images {
+    max-width: 50%;
+    position: relative;
+}
+
+.about .about-content .images .image-primary,
+.about .about-content .images .image-secondary {
+    width: 70%;
+    border-radius: 10px;
+    border: 6px solid var(--white-color);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+.about .about-content .images .image-secondary {
+    width: 50%;
+    height: 70%;
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+}
+
+.about .about-content .text-part {
+    max-width: 500px;
+    text-align: left;
+}
+
+.about .about-content .text-part h5 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.about .about-content .text-part h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.about .about-content .text-part p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    line-height: 1.4;
+    color: var(--text-dark);
+}
+
+.about .about-content .text-part .btn {
+    padding: 15px 30px;
+}
+
+/* End the About Section */
+
+/* Start events section style */
+.featured-events {
+    padding: 60px 20px;
+    background-color: var(--white-color);
+}
+
+.featured-events h2 {
+    font-size: 2.8em;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--secondary-color);
+}
+
+.featured-events .event-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 30px;
+}
+
+.featured-events .event-item {
+    display: flex;
+    gap: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-events .event-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.featured-events .event-item img {
+    width: 200px;
+    object-fit: cover;
+    border-radius: 12px 0 0 12px;
+}
+
+.featured-events .event-details {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.event-details h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.featured-events .event-details h5 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.featured-events .event-details p {
+    font-size: 1em;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+    line-height: 1.4;
+}
+
+.featured-events .event-details .btn {
+    padding: 10px 20px;
+    width: max-content;
+}
+
+/*End Event style section*/
+
+/* Start Open Doors Section Styling */
+.open-doors-difference {
+    padding: 60px 20px;
+}
+
+.open-doors-difference h2 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+.open-doors-difference .intro-text {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: var(--text-dark);
+}
+
+.open-doors-difference .difference-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.open-doors-difference .difference-item {
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.open-doors-difference .difference-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.open-doors-difference .difference-item h3 {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.open-doors-difference .difference-item p {
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+.open-doors-difference .actions {
+    text-align: right;
+    margin-top: 40px;
+}
+
+.actions .btn {
+    padding: 12px 25px;
+    margin: 10px;
+}
+
+/*End Open door section style*/
+
+/*Start testimonials style*/
+.testimonials {
+    padding: 60px 0;
+    background-color: var(--white-color);
+}
+
+.testimonials h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: var(--secondary-color);
+}
+
+.testimonials .testimonial-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.testimonials .testimonial-item {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonials .testimonial-item:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.testimonials .testimonial-item blockquote {
+    font-style: italic;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.testimonials .testimonial-item footer {
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.testimonials .testimonial-item.large-item {
+    grid-row: span 2;
+    grid-column: span 1;
+}
+
+/*End Testimonials style*/
+
+/*Start contact.css style*/
+.contact-section {
+    padding: 80px 20px;
+    position: relative;
+}
+
+.contact-section::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    width: 100%;
+    height: 50%;
+    background-image: url("../images/map-bg.png");
+    z-index: -1;
+    background-size: contain;
+    opacity: 0.8;
+}
+
+.contact-section h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+}
+
+.contact-section .contact-intro {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+.contact-section .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+}
+
+.contact-section .contact-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.contact-section .contact-card {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 25px 0 #0000000f;
+}
+
+.contact-section .contact-card img {
+    width: 50px;
+    height: 50px;
+}
+
+.contact-section .contact-card h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact-section .contact-card p, .contact-section .contact-card a {
+    color: var(--text-dark);
+}
+
+.contact-section .contact-form {
+    padding: 0 30px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contact-section .contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-section .contact-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    color: var(--text-dark);
+}
+
+.contact-section .contact-form .form-group input,
+.contact-section .contact-form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    color: var(--text-dark);
+    font-family: var(--font-family-league), sans-serif;
+}
+
+.contact-section .contact-form .form-group input:focus,
+.contact-section .contact-form .form-group textarea:focus {
+    outline: none;
+    border: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 5px var(--secondary-color);
+}
+
+.contact-section .contact-form .btn {
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+/* Subscription Section */
+.subscription-section {
+    background: var(--primary-color);
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.subscription-section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+}
+
+.subscription-section p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.subscription-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.subscription-form input[type="email"] {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+    max-width: 400px;
+}
+
+.subscription-form button {
+    border: none;
+    cursor: pointer;
+}
+
+
+/*Start responsive design*/
+@media (max-width: 1024px) {
+    .testimonials .testimonial-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .about .about-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about .about-content .images {
+        width: 100%;
+        position: static;
+    }
+
+    .about .about-content .images .image-secondary {
+        position: static;
+        width: 100%;
+    }
+
+    .about .about-content .images .image-primary {
+        display: none;
+    }
+
+
+    .about .about-content .text-part {
+        max-width: 100%;
+    }
+
+    .open-doors-difference .difference-item {
+        padding: 15px;
+    }
+
+
+    .open-doors-difference .actions .btn {
+        padding: 10px 20px;
+        display: block;
+        width: max-content;
+        text-align: center;
+        margin: 10px auto;
+    }
+
+    .testimonials .testimonial-list {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-section .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-section .contact-content .contact-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .contact-section .contact-form {
+        padding: 0;
+    }
+
+}
+
+
+@media (max-width: 580px) {
+    .featured-events .event-list {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-events .event-item {
+        flex-direction: column;
+    }
+
+    .featured-events .event-item img {
+        width: 100%;
+        border-radius: 12px 12px 0 0;
+    }
+}
+
