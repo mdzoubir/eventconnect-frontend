@@ -1,32 +1,51 @@
-import { CalendarDays, MapPin } from "lucide-react";
+const formatDate = (dateString: string) =>
+  new Date(dateString).toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
-type EventProps = {
+interface EventProps {
   id: number;
-  name: string;
+  title: string;
   date: string;
   location: string;
   description: string;
-  image: string;
-};
+  category?: string;
+  image?: string;
+}
 
-const EventCard = ({ id, name, date, location, description, image }: EventProps) => {
+const EventCard = ({
+  id,
+  title,
+  date,
+  location,
+  description,
+  category,
+  image,
+}: EventProps) => {
+  const formattedDate = formatDate(date);
+  const imageUrl = image
+    ? `http://localhost:8000${image}`
+    : "/default-event.jpg";
+
   return (
-    <div className="bg-white rounded-lg shadow-md p-4">
-      <img src={image} alt={name} className="w-full h-48 object-cover rounded-md" />
-      <div className="mt-3">
-        <h3 className="text-xl font-bold">{name}</h3>
-        <p className="flex items-center gap-2 text-gray-600">
-          <CalendarDays size={18} /> {date}
-        </p>
-        <p className="flex items-center gap-2 text-gray-600">
-          <MapPin size={18} /> {location}
-        </p>
-        <p className="text-gray-700 mt-2">{description}</p>
-        <a href={`/event/${id}`} className="mt-3 inline-block text-blue-500">
-          Learn More →
+    <section className="event">
+      <img src={imageUrl} alt={title} className="event-image" />
+      <div className="event-details">
+        <h2>
+          {title}
+          {category && <span className="text-small">"{category}"</span>}
+        </h2>
+        <p className="event-date">Date: {formattedDate}</p>
+        <p className="event-location">Location: {location}</p>
+        <p className="event-description">{description}</p>
+        <a href={`event-details.html?id=${id}`} className="btn btn-secondary">
+          Learn More
         </a>
       </div>
-    </div>
+    </section>
   );
 };
 

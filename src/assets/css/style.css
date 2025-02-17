@@ -50,6 +50,12 @@ ul {
   transition: background 0.3s ease;
 }
 
+.text-small {
+  font-size: 1rem;
+  color: gray;
+  font-style: italic  ;
+}
+
 .btn-primary {
   background: var(--primary-color);
 }

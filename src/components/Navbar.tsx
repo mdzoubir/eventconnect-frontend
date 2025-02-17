@@ -80,10 +80,10 @@ const Navbar = () => {
             <div className="line"></div>
           </div>
           <div className="header-buttons">
-            <NavLink to="" className="btn btn-primary">
+            <NavLink to="/login" className="btn btn-primary">
               Login
             </NavLink>
-            <NavLink to="" className="btn btn-secondary">
+            <NavLink to="/register" className="btn btn-secondary">
               Register
             </NavLink>
           </div>

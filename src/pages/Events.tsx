@@ -1,33 +1,29 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import EventCard from "../components/EventCard";
+import { fetchEvents } from "../services/eventService";
+import { EventData } from "../types/eventTypes";
 
-interface EventData {
-  id: number;
-  title: string;
-  date: string;
-  location: string;
-  description: string;
-  category: string;
-  image: string;
-}
 const Events = () => {
   const [events, setEvents] = useState<EventData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(1); // Add totalPages state
+  const [sorting, setSorting] = useState<string>("");
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/events/")
-      .then((response) => {
-        setEvents(response.data); // Update the events state
-        setLoading(false); // Set loading to false
-      })
-      .catch((err) => {
-        setError("Error fetching events");
-        setLoading(false); // Set loading to false
-      });
-  }, []); // Empty dependency array ensures this runs only once
+    const fetchData = async () => {
+      try {
+        const data = await fetchEvents(currentPage, sorting);
+        setEvents(data.events);
+        setTotalPages(data.total_pages);
+      } catch (error) {
+        console.error("Failed to fetch events", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [currentPage, sorting]);
 
   return (
     <>
@@ -45,14 +41,15 @@ const Events = () => {
           <div className="filter-section">
             <form className="filter-form">
               <div className="form-group">
-                <label htmlFor="city-select">Select City:</label>
-                <select id="city-select" name="city">
-                  <option value="">All Cities</option>
-                  <option value="Casablanca">Casablanca</option>
-                  <option value="Marrakech">Marrakech</option>
-                  <option value="Tangier">Tangier</option>
-                  <option value="Rabat">Rabat</option>
-                  <option value="Fes">Fes</option>
+                <label htmlFor="sort-select">Sort by:</label>
+                <select
+                  id="sort-select"
+                  value={sorting}
+                  onChange={(e) => setSorting(e.target.value)}
+                >
+                  <option value="">Default</option>
+                  <option value="recent">Recent</option>
+                  <option value="upcoming">Upcoming</option>
                 </select>
               </div>
 
@@ -73,234 +70,43 @@ const Events = () => {
               </button>
             </form>
           </div>
-          {events.map((event) => (
-            <EventCard
-              key={event.id}
-              id={event.id}
-              title={event.title}
-              date={event.date}
-              location={event.location}
-              description={event.description}
-              category={event.description}
-              image={event.image}
-            />
-          ))}
+          {loading ? (
+            <p className="text-center">Loading events...</p>
+          ) : events.length === 0 ? (
+            <p className="text-center">No events found.</p>
+          ) : (
+            <div>
+              {events.map((event) => (
+                <EventCard
+                  key={event.id}
+                  {...event}
+                  category={event.category ? event.category.name : undefined}
+                  image={
+                    event.primary_image ? event.primary_image.image : undefined
+                  }
+                />
+              ))}
+            </div>
+          )}
 
-          <section className="event">
-            <img
-              src="assets/images/mawazine.jpg"
-              alt="Event 1"
-              className="event-image"
-            />
-            <div className="event-details">
-              <h2>Event Name</h2>
-              <p className="event-date">Date: January 15, 2025</p>
-              <p className="event-location">Location: Casablanca, Morocco</p>
-              <p className="event-description">
-                Join us for a day of vibrant performances, traditional foods,
-                and cultural exhibitions celebrating the rich heritage of our
-                community.
-              </p>
-              <a href="event-details.html" className="btn btn-secondary">
-                Learn More
-              </a>
-            </div>
-          </section>
-
-          <section className="event">
-            <img
-              src="assets/images/Marrakech-Film-Festival.jpg"
-              alt="Event 2"
-              className="event-image"
-            />
-            <div className="event-details">
-              <h2>Event Name</h2>
-              <p className="event-date">Date: February 10, 2025</p>
-              <p className="event-location">Location: Marrakech, Morocco</p>
-              <p className="event-description">
-                Experience the magic of Marrakech with this cultural showcase
-                featuring music, dance, and crafts.
-              </p>
-              <a href="event-details.html" className="btn btn-secondary">
-                Learn More
-              </a>
-            </div>
-          </section>
-          <section className="event">
-            <img
-              src="assets/images/IMG_7758.JPG"
-              alt="Event 1"
-              className="event-image"
-            />
-            <div className="event-details">
-              <h2>Event Name</h2>
-              <p className="event-date">Date: January 15, 2025</p>
-              <p className="event-location">Location: Casablanca, Morocco</p>
-              <p className="event-description">
-                Join us for a day of vibrant performances, traditional foods,
-                and cultural exhibitions celebrating the rich heritage of our
-                community.
-              </p>
-              <a href="event-details.html" className="btn btn-secondary">
-                Learn More
-              </a>
-            </div>
-          </section>
-
-          <section className="event">
-            <img
-              src="assets/images/9e67ee1d8b83d89a78993c4d924285e0.jpg"
-              alt="Event 2"
-              className="event-image"
-            />
-            <div className="event-details">
-              <h2>Event Name</h2>
-              <p className="event-date">Date: February 10, 2025</p>
-              <p className="event-location">Location: Marrakech, Morocco</p>
-              <p className="event-description">
-                Experience the magic of Marrakech with this cultural showcase
-                featuring music, dance, and crafts.
-              </p>
-              <a href="event-details.html" className="btn btn-secondary">
-                Learn More
-              </a>
-            </div>
-          </section>
-          <section className="event">
-            <img
-              src="assets/images/IMG_7760.JPG"
-              alt="Event 1"
-              className="event-image"
-            />
-            <div className="event-details">
-              <h2>Event Name</h2>
-              <p className="event-date">Date: January 15, 2025</p>
-              <p className="event-location">Location: Casablanca, Morocco</p>
-              <p className="event-description">
-                Join us for a day of vibrant performances, traditional foods,
-                and cultural exhibitions celebrating the rich heritage of our
-                community.
-              </p>
-              <a href="event-details.html" className="btn btn-secondary">
-                Learn More
-              </a>
-            </div>
-          </section>
-
-          <section className="event">
-            <img
-              src="assets/images/tborida.jpg"
-              alt="Event 2"
-              className="event-image"
-            />
-            <div className="event-details">
-              <h2>Event Name</h2>
-              <p className="event-date">Date: February 10, 2025</p>
-              <p className="event-location">Location: Marrakech, Morocco</p>
-              <p className="event-description">
-                Experience the magic of Marrakech with this cultural showcase
-                featuring music, dance, and crafts.
-              </p>
-              <a href="event-details.html" className="btn btn-secondary">
-                Learn More
-              </a>
-            </div>
-          </section>
-          <section className="event">
-            <img
-              src="assets/images/Sunrise-at-Sahara-desert-Merzouga.jpg"
-              alt="Event 1"
-              className="event-image"
-            />
-            <div className="event-details">
-              <h2>Event Name</h2>
-              <p className="event-date">Date: January 15, 2025</p>
-              <p className="event-location">Location: Casablanca, Morocco</p>
-              <p className="event-description">
-                Join us for a day of vibrant performances, traditional foods,
-                and cultural exhibitions celebrating the rich heritage of our
-                community.
-              </p>
-              <a href="event-details.html" className="btn btn-secondary">
-                Learn More
-              </a>
-            </div>
-          </section>
-
-          <section className="event">
-            <img
-              src="assets/images/merzouga-desert-camp-1024x629.png"
-              alt="Event 2"
-              className="event-image"
-            />
-            <div className="event-details">
-              <h2>Event Name</h2>
-              <p className="event-date">Date: February 10, 2025</p>
-              <p className="event-location">Location: Marrakech, Morocco</p>
-              <p className="event-description">
-                Experience the magic of Marrakech with this cultural showcase
-                featuring music, dance, and crafts.
-              </p>
-              <a href="event-details.html" className="btn btn-secondary">
-                Learn More
-              </a>
-            </div>
-          </section>
-          <section className="event">
-            <img
-              src="assets/images/international-nomads-festival-askaladdin.webp"
-              alt="Event 1"
-              className="event-image"
-            />
-            <div className="event-details">
-              <h2>Event Name</h2>
-              <p className="event-date">Date: January 15, 2025</p>
-              <p className="event-location">Location: Casablanca, Morocco</p>
-              <p className="event-description">
-                Join us for a day of vibrant performances, traditional foods,
-                and cultural exhibitions celebrating the rich heritage of our
-                community.
-              </p>
-              <a href="event-details.html" className="btn btn-secondary">
-                Learn More
-              </a>
-            </div>
-          </section>
-
-          <section className="event">
-            <img
-              src="assets/images/IMG_74DF90841925-1.jpeg"
-              alt="Event 2"
-              className="event-image"
-            />
-            <div className="event-details">
-              <h2>Event Name</h2>
-              <p className="event-date">Date: February 10, 2025</p>
-              <p className="event-location">Location: Marrakech, Morocco</p>
-              <p className="event-description">
-                Experience the magic of Marrakech with this cultural showcase
-                featuring music, dance, and crafts.
-              </p>
-              <a href="event-details.html" className="btn btn-secondary">
-                Learn More
-              </a>
-            </div>
-          </section>
-
+          {/* Pagination */}
           <div className="pagination">
-            <button className="btn btn-primary" data-page="prev" disabled>
+            <button
+              className="btn btn-primary"
+              disabled={currentPage <= 1}
+              onClick={() => setCurrentPage((prev) => prev - 1)}
+            >
               &laquo; Previous
             </button>
-            <button className="btn btn-primary active" disabled data-page="1">
-              1
-            </button>
-            <button className="btn btn-primary" data-page="2">
-              2
-            </button>
-            <button className="btn btn-primary" data-page="3">
-              3
-            </button>
-            <button className="btn btn-primary" data-page="next">
+            <span>
+              {" "}
+              Page {currentPage} of {totalPages}{" "}
+            </span>
+            <button
+              className="btn btn-primary"
+              disabled={currentPage >= totalPages}
+              onClick={() => setCurrentPage((prev) => prev + 1)}
+            >
               Next &raquo;
             </button>
           </div>
