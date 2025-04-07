@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import adressIcon from "../assets/images/icons/placeholder.png";
 import emailIcon from "../assets/images/icons/email.png";
 import phoneIcon from "../assets/images/icons/phone.png";
+import { toast } from "react-hot-toast";
 
 // Types
 interface FormData {
@@ -36,6 +37,12 @@ const Contact = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Email validation function using regex
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  };
+
   // Handlers
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -50,11 +57,10 @@ const Contact = () => {
     if (!formData.name.trim()) {
       newErrors.name = "Name is required.";
     }
-
     if (!formData.email.trim()) {
       newErrors.email = "Email is required.";
-    } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)) {
-      newErrors.email = "Invalid email format.";
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = "Please enter a valid email address.";
     }
 
     if (!formData.message.trim()) {
@@ -78,16 +84,17 @@ const Contact = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+      console.log(res.ok);
 
       if (res.ok) {
-        setSuccessMessage("✅ Message sent successfully!");
+        toast.success("Message sent successfully!");
         setFormData({ name: "", email: "", message: "" });
         setErrors({});
       } else {
-        setErrorMessage("⚠️ Something went wrong. Please try again.");
+        toast.error("Something went wrong. Please try again.");
       }
     } catch {
-      setErrorMessage("❌ Server error. Please try later.");
+      toast.error("Server error. Please try later.");
     }
   };
 
@@ -127,8 +134,12 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="contact-form">
-            {errorMessage && <p className="text-red-600 mb-2">{errorMessage}</p>}
-            {successMessage && <p className="text-green-600 mb-2">{successMessage}</p>}
+            {errorMessage && (
+              <p className="text-red-600 mb-2">{errorMessage}</p>
+            )}
+            {successMessage && (
+              <p className="text-green-600 mb-2">{successMessage}</p>
+            )}
 
             <form onSubmit={handleSubmit}>
               <FormField
@@ -138,7 +149,9 @@ const Contact = () => {
                 value={formData.name}
                 onChange={handleChange}
               />
-              {errors.name && <p className="text-red-500 text-sm -mt-10">{errors.name}</p>}
+              {errors.name && (
+                <p className="text-red-500 text-sm -mt-10">{errors.name}</p>
+              )}
 
               <FormField
                 label="Email"
@@ -147,7 +160,9 @@ const Contact = () => {
                 value={formData.email}
                 onChange={handleChange}
               />
-              {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+              {errors.email && (
+                <p className="text-red-500 text-sm">{errors.email}</p>
+              )}
 
               <div className="form-group">
                 <label htmlFor="message">Message</label>
@@ -158,7 +173,6 @@ const Contact = () => {
                   placeholder="Your Message"
                   value={formData.message}
                   onChange={handleChange}
-                  
                 ></textarea>
                 {errors.message && (
                   <p className="text-red-500 text-sm">{errors.message}</p>
@@ -189,7 +203,7 @@ const ContactCard = ({ icon, title, content }: ContactCardProps) => (
 
 // Reusable FormField
 const FormField = ({ label, id, type, value, onChange }: FormFieldProps) => (
-  <div className="form-group" style={{marginBottom: "5px"}}>
+  <div className="form-group" style={{ marginBottom: "5px" }}>
     <label htmlFor={id}>{label}</label>
     <input
       id={id}
@@ -198,7 +212,6 @@ const FormField = ({ label, id, type, value, onChange }: FormFieldProps) => (
       value={value}
       onChange={onChange}
       placeholder={`Your ${label}`}
-      
     />
   </div>
 );
