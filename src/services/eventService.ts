@@ -1,18 +1,21 @@
-import axios from "axios";
+export const fetchEvents = async (
+  page: number,
+  sorting?: string,
+  eventType?: string
+) => {
+  let url = `http://localhost:8000/api/events/?page=${page}`;
 
-const API_BASE_URL = "http://localhost:8000/api/events/";
+  if (sorting) url += `&ordering=${sorting}`;
+  if (eventType) url += `&category__name=${eventType}`;
 
-export const fetchEvents = async (page = 1, sorting = "") => {
-  try {
-    const response = await axios.get(API_BASE_URL, {
-      params: { page: page, ordering: sorting },
-    });
-    return {
-      events: response.data.results, // Assuming 'results' contains the event data
-      total_pages: response.data.total_pages, // Get 'total_pages' from the response
-    };
-  } catch (error) {
-    console.error("Error fetching events:", error);
-    return { events: [], total_pages: 1 }; // Default values in case of error
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error("Failed to fetch events");
   }
+
+  const data = await response.json();
+  return {
+    events: data.results,
+    total_pages: data.total_pages,
+  };
 };

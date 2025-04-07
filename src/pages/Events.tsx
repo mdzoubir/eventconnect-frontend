@@ -7,13 +7,18 @@ const Events = () => {
   const [events, setEvents] = useState<EventData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalPages, setTotalPages] = useState<number>(1); // Add totalPages state
+  const [totalPages, setTotalPages] = useState<number>(1);
   const [sorting, setSorting] = useState<string>("");
+  const [eventType, setEventType] = useState<string>("");
+  const [eventTypes, setEventTypes] = useState<{ id: number; name: string }[]>(
+    []
+  );
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
-        const data = await fetchEvents(currentPage, sorting);
+        const data = await fetchEvents(currentPage, sorting, eventType);
         setEvents(data.events);
         setTotalPages(data.total_pages);
       } catch (error) {
@@ -23,7 +28,27 @@ const Events = () => {
       }
     };
     fetchData();
-  }, [currentPage, sorting]);
+  }, [currentPage, sorting, eventType]);
+  useEffect(() => {
+    const fetchEventTypes = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:8000/api/event-categories/"
+        );
+        const data = await response.json();
+        setEventTypes(data);
+      } catch (error) {
+        console.error("Failed to fetch event types", error);
+      }
+    };
+
+    fetchEventTypes();
+  }, []);
+
+  const handleFilterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setCurrentPage(1);
+  };
 
   return (
     <>
@@ -39,7 +64,7 @@ const Events = () => {
       <main className="events-list">
         <div className="container">
           <div className="filter-section">
-            <form className="filter-form">
+            <form className="filter-form" onSubmit={handleFilterSubmit}>
               <div className="form-group">
                 <label htmlFor="sort-select">Sort by:</label>
                 <select
@@ -55,21 +80,34 @@ const Events = () => {
 
               <div className="form-group">
                 <label htmlFor="type-select">Event Type:</label>
-                <select id="type-select" name="event_type">
+                <select
+                  id="type-select"
+                  name="event_type"
+                  value={eventType}
+                  onChange={(e) => setEventType(e.target.value)}
+                >
                   <option value="">All Types</option>
-                  <option value="Music">Music</option>
-                  <option value="Film">Film</option>
-                  <option value="Art">Art</option>
-                  <option value="Food">Food</option>
-                  <option value="Cultural">Cultural</option>
+                  {eventTypes.map((type) => (
+                    <option key={type.id} value={type.name}>
+                      {type.name}
+                    </option>
+                  ))}
                 </select>
               </div>
-
-              <button type="submit" className="btn btn-primary">
-                Filter
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => {
+                  setSorting("");
+                  setEventType("");
+                  setCurrentPage(1);
+                }}
+              >
+                Reset
               </button>
             </form>
           </div>
+
           {loading ? (
             <p className="text-center">Loading events...</p>
           ) : events.length === 0 ? (
@@ -89,7 +127,6 @@ const Events = () => {
             </div>
           )}
 
-          {/* Pagination */}
           <div className="pagination">
             <button
               className="btn btn-primary"
@@ -99,8 +136,7 @@ const Events = () => {
               &laquo; Previous
             </button>
             <span>
-              {" "}
-              Page {currentPage} of {totalPages}{" "}
+              Page {currentPage} of {totalPages}
             </span>
             <button
               className="btn btn-primary"
