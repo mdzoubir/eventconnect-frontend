@@ -26,7 +26,7 @@ interface FormFieldProps {
 }
 
 // Component
-const Contact = () => {
+const ContactSection = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -99,7 +99,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="contact-section">
+    <section className="contact-section" id="contact">
       <div className="container">
         <h2>Contact Us</h2>
         <p className="contact-intro">
@@ -216,4 +216,4 @@ const FormField = ({ label, id, type, value, onChange }: FormFieldProps) => (
   </div>
 );
 
-export default Contact;
+export default ContactSection;

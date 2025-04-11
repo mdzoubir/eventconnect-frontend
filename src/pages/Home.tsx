@@ -1,5 +1,5 @@
 import Subscribe from "../sections/Subscribe";
-import Contact from "../sections/Contact";
+import ContactSection from "../sections/ContactSection";
 import Testimonials from "../sections/Testimonials";
 import OpenDoorsDifference from "../sections/OpenDoorsDifference";
 import About from "../sections/About";
@@ -14,7 +14,7 @@ const Home = () => {
       <FeaturedEvents />
       <OpenDoorsDifference />
       <Testimonials />
-      <Contact />
+      <ContactSection />
       <Subscribe />
     </>
   );

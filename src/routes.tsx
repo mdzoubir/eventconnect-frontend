@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import EventDetail from "./pages/EventDetail.tsx";
 import Login from "./pages/Login.tsx";
 import Events from "./pages/Events.tsx";
+import Contact from "./pages/Contact.tsx";
 import Register from "./pages/Register.tsx";
 import Navbar from "./components/Navbar.tsx";
 import Footer from "./components/Footer.tsx";
@@ -32,6 +33,7 @@ const AppRoutes = () => {
         <Route path="/events/:id" element={<EventDetail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
     </Router>
