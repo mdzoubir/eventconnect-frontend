@@ -1,7 +1,7 @@
 @import "style.css";
 
 .events-intro {
-    background: url("../images/575a1ed4-6159-40d3-a54e-ca54ba54c3fd.webp") center no-repeat;
+    background: url("../../assets/images/575a1ed4-6159-40d3-a54e-ca54ba54c3fd.webp") center no-repeat;
     color: var(--white-color);
     text-align: center;
     width: 100%;

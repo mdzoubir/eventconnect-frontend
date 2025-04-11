@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "League Spartan";
-  src: url("../fonts/League_Spartan/LeagueSpartan-VariableFont_wght.ttf")
+  src: url("../../assets/fonts/League_Spartan/LeagueSpartan-VariableFont_wght.ttf")
     format("truetype");
 }
 
@@ -44,7 +44,7 @@ ul {
 
 .btn {
   color: var(--white-color);
-  padding: 8px 12px;
+  padding: 10px 15px;
   border-radius: 5px;
   font-weight: 500;
   text-transform: uppercase;
@@ -199,7 +199,7 @@ header .main-header .burger-menu.active .line:nth-child(3) {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("../images/map-bg.png") no-repeat fixed center;
+  background: url("../../assets/images/map-bg.png") no-repeat fixed center;
   opacity: 0.3;
   pointer-events: none; /* Ensures clicks pass through this layer */
 }

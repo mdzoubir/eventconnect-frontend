@@ -1,54 +1,17 @@
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import EventCard from "../components/EventCard";
-import { fetchEvents } from "../services/eventService";
-import { EventData } from "../types/eventTypes";
+import useFetchEvents from "../hooks/useFetchEvents";
+import useFetchEventTypes from "../hooks/useFetchEventTypes";
+import EventFilter from "../components/EventFilter";
+import Pagination from "../components/Pagination";
 
-const Events = () => {
-  const [events, setEvents] = useState<EventData[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalPages, setTotalPages] = useState<number>(1);
+const Events: React.FC = () => {
   const [sorting, setSorting] = useState<string>("");
   const [eventType, setEventType] = useState<string>("");
-  const [eventTypes, setEventTypes] = useState<{ id: number; name: string }[]>(
-    []
-  );
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const data = await fetchEvents(currentPage, sorting, eventType);
-        setEvents(data.events);
-        setTotalPages(data.total_pages);
-      } catch (error) {
-        console.error("Failed to fetch events", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [currentPage, sorting, eventType]);
-  useEffect(() => {
-    const fetchEventTypes = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:8000/api/event-categories/"
-        );
-        const data = await response.json();
-        setEventTypes(data);
-      } catch (error) {
-        console.error("Failed to fetch event types", error);
-      }
-    };
-
-    fetchEventTypes();
-  }, []);
-
-  const handleFilterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setCurrentPage(1);
-  };
+  const { events, loading, totalPages } = useFetchEvents(currentPage, sorting, eventType);
+  const eventTypes = useFetchEventTypes();
 
   return (
     <>
@@ -64,48 +27,14 @@ const Events = () => {
       <main className="events-list">
         <div className="container">
           <div className="filter-section">
-            <form className="filter-form" onSubmit={handleFilterSubmit}>
-              <div className="form-group">
-                <label htmlFor="sort-select">Sort by:</label>
-                <select
-                  id="sort-select"
-                  value={sorting}
-                  onChange={(e) => setSorting(e.target.value)}
-                >
-                  <option value="">Default</option>
-                  <option value="recent">Recent</option>
-                  <option value="upcoming">Upcoming</option>
-                </select>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="type-select">Event Type:</label>
-                <select
-                  id="type-select"
-                  name="event_type"
-                  value={eventType}
-                  onChange={(e) => setEventType(e.target.value)}
-                >
-                  <option value="">All Types</option>
-                  {eventTypes.map((type) => (
-                    <option key={type.id} value={type.name}>
-                      {type.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={() => {
-                  setSorting("");
-                  setEventType("");
-                  setCurrentPage(1);
-                }}
-              >
-                Reset
-              </button>
-            </form>
+            <EventFilter
+              sorting={sorting}
+              eventType={eventType}
+              eventTypes={eventTypes}
+              setSorting={setSorting}
+              setEventType={setEventType}
+              setCurrentPage={setCurrentPage}
+            />
           </div>
 
           {loading ? (
@@ -127,25 +56,11 @@ const Events = () => {
             </div>
           )}
 
-          <div className="pagination">
-            <button
-              className="btn btn-primary"
-              disabled={currentPage <= 1}
-              onClick={() => setCurrentPage((prev) => prev - 1)}
-            >
-              &laquo; Previous
-            </button>
-            <span>
-              Page {currentPage} of {totalPages}
-            </span>
-            <button
-              className="btn btn-primary"
-              disabled={currentPage >= totalPages}
-              onClick={() => setCurrentPage((prev) => prev + 1)}
-            >
-              Next &raquo;
-            </button>
-          </div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </main>
     </>

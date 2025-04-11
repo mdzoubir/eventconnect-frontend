@@ -1,5 +1,5 @@
-import Subscribe from "../sections/Subscribe";
-import ContactSection from "../sections/ContactSection";
+import Subscribe from "../components/Subscribe";
+import ContactSection from "../components/contact/ContactSection";
 import Testimonials from "../sections/Testimonials";
 import OpenDoorsDifference from "../sections/OpenDoorsDifference";
 import About from "../sections/About";
