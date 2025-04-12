@@ -1,6 +1,7 @@
-import { NavLink } from "react-router-dom";  // Import NavLink
+import { NavLink } from "react-router-dom"; // Import NavLink
 import navbarLogo from "../assets/images/event-finder-logo.png";
 import { useState } from "react";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,7 @@ const Navbar = () => {
   return (
     <header>
       <div className="top-bar">
-        <div className="container">
+        <div className="container p-0">
           <div className="contact-info">
             <span>📍 Casablanca, Morocco</span> |
             <span>📞 +212 123-456-789</span>

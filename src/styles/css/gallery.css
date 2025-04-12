@@ -1,7 +1,5 @@
-@import "style.css";
-
 /* Hero Section */
-.gallery-hero-section {
+.myowen .gallery-hero-section {
     background: url("../images/sahara-erg-chebbi.webp") no-repeat fixed center;
     background-size: cover;
     width: 100%;
@@ -13,7 +11,7 @@
     text-align: center;
 }
 
-.gallery-hero-section::before {
+.myowen .gallery-hero-section::before {
     position: absolute;
     content: "";
     width: 100%;
@@ -24,25 +22,25 @@
     z-index: 1;
 }
 
-.gallery-hero-content {
+.myowen .gallery-hero-content {
     position: relative;
     z-index: 2;
     animation: slide-up 1s ease-in-out;
     color: var(--white-color);
 }
 
-.gallery-hero-content h1 {
+.myowen .gallery-hero-content h1 {
     font-size: 4rem;
     text-transform: uppercase;
     margin-bottom: 16px;
 }
 
-.gallery-hero-content p {
+.myowen .gallery-hero-content p {
     margin-bottom: 20px;
     font-size: 1.4rem;
 }
 
-.gallery-hero-content .btn {
+.myowen .gallery-hero-content .btn {
     display: inline-block;
     padding: 10px 20px;
     font-size: 1.2rem;
@@ -62,31 +60,31 @@
 }
 
 
-.main-gallery-section {
+.myowen .main-gallery-section {
     padding: 4rem 2rem;
 }
 
-.main-gallery-section .section-title {
+.myowen .main-gallery-section .section-title {
     font-size: 2.5rem;
     text-decoration: underline;
     color: var(--secondary-color);
     margin-bottom: 1rem;
 }
 
-.main-gallery-section .section-para {
+.myowen .main-gallery-section .section-para {
     margin-bottom: 1em;
     max-width: 600px;
     font-size: 1em;
 }
 
-.gallery-grid {
+.myowen .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
     align-items: stretch;
 }
 
-.gallery-item {
+.myowen .gallery-item {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -97,17 +95,17 @@
 }
 
 
-.gallery-item:nth-child(2n) {
+.myowen .gallery-item:nth-child(2n) {
     flex-direction: column-reverse;
 }
 
 
-.gallery-item:hover {
+.myowen .gallery-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.gallery-item img {
+.myowen .gallery-item img {
     width: 100%;
     display: block;
     object-fit: cover;
@@ -115,13 +113,13 @@
 }
 
 
-.gallery-info {
+.myowen .gallery-info {
     padding: 1.5rem;
     background-color: var(--primary-color);
     text-align: center;
 }
 
-.gallery-info h3 {
+.myowen .gallery-info h3 {
     font-size: 1.5rem;
     margin: 0;
     color: white;

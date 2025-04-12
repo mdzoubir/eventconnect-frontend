@@ -1,6 +1,4 @@
-@import "style.css";
-
-.about-intro {
+.myowen .about-intro {
     background: url("../../assets/images/Open-Doors-Morocco-About-Us-jpg.webp") no-repeat center center/cover;
     color: var(--white-color);
     position: relative;
@@ -8,7 +6,7 @@
     height: 81vh;
 }
 
-.about-intro::before {
+.myowen .about-intro::before {
     position: absolute;
     content: "";
     width: 100%;
@@ -18,14 +16,14 @@
     left: 0;
 }
 
-.about-intro .container {
+.myowen .about-intro .container {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
     height: 100%;
 }
 
-.about-intro .about-content {
+.myowen .about-intro .myowen .about-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,18 +32,18 @@
     text-align: center;
 }
 
-.about-content h1 {
+.myowen .about-content h1 {
     font-size: 4rem;
     text-transform: uppercase;
     margin-bottom: 16px;
 }
 
-.about-content p {
+.myowen .about-content p {
     font-size: 1.3rem;
     line-height: 1.5;
 }
 
-.about-content .btn {
+.myowen .about-content .btn {
     display: inline-block;
     padding: 10px 20px;
     font-size: 1.2rem;
@@ -54,25 +52,25 @@
 
 
 /* About Page Values Section */
-.about-values {
+.myowen .about-values {
     padding: 4rem 2rem;
     text-align: center;
 }
 
-.about-values h2 {
+.myowen .about-values h2 {
     font-size: 2rem;
     text-transform: uppercase;
     margin-bottom: 2rem;
     color: var(--primary-color);
 }
 
-.values-list {
+.myowen .values-list {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
 }
 
-.values-list li {
+.myowen .values-list li {
     flex: 1 1 calc(33% - 2rem);
     background-color: var(--white-color);
     border-radius: 8px;
@@ -81,53 +79,53 @@
     text-align: left;
 }
 
-.values-list li h3 {
+.myowen .values-list li h3 {
     font-size: 1.5rem;
     color: var(--text-dark);
     margin-bottom: 1rem;
 }
 
-.values-list li p {
+.myowen .values-list li p {
     font-size: 1rem;
     color: #666;
     line-height: 1.6;
 }
 
 @media (max-width: 768px) {
-    .values-list li {
+    .myowen .values-list li {
         flex: 1 1 100%;
     }
 }
 
 
 /* About Page Team Section */
-.about-team {
+.myowen .about-team {
     padding: 4rem 2rem;
     background-color: var(--white-color);
     text-align: center;
 }
 
-.about-team h2 {
+.myowen .about-team h2 {
     font-size: 2rem;
     text-transform: uppercase;
     margin-bottom: 1rem;
     color: var(--primary-color);
 }
 
-.section-description {
+.myowen .section-description {
     font-size: 1.2rem;
     color: var(--text-dark);
     margin-bottom: 2rem;
 }
 
-.team-grid {
+.myowen .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     justify-items: center;
 }
 
-.team-member {
+.myowen .team-member {
     width: 100%;
     background: #fff;
     border-radius: 8px;
@@ -136,35 +134,35 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.team-member:hover {
+.myowen .team-member:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.team-member img {
+.myowen .team-member img {
     width: 100%;
     height: auto;
     object-fit: cover;
 }
 
-.team-member div {
+.myowen .team-member div {
     margin: 16px auto;
 }
 
-.team-member h3 {
+.myowen .team-member h3 {
     font-size: 1.5rem;
     color: #333;
     margin-bottom: 0.5rem;
 }
 
-.team-member p {
+.myowen .team-member p {
     font-size: 1rem;
     color: #555;
 }
 
 
 /* Mission and Vision Section */
-.about-mission-vision {
+.myowen .about-mission-vision {
     padding: 5rem 2rem;
     border-top: 5px solid var(--primary-color);
     border-bottom: 5px solid var(--primary-color);
@@ -227,20 +225,20 @@
 
 
 /* History Section */
-.about-history {
+.myowen .about-history {
     padding: 5rem 2rem;
     background-color: var(--white-color);
     text-align: center;
 }
 
-.about-history h2 {
+.myowen .about-history h2 {
     font-size: 2.5rem;
     color: var(--primary-color);
     margin-bottom: 2rem;
     text-transform: uppercase;
 }
 
-.about-history p {
+.myowen .about-history p {
     font-size: 1.2rem;
     color: var(--text-dark);
     line-height: 1.5;
@@ -257,7 +255,7 @@
     align-items: center;
 }
 
-.timeline-item {
+.myowen .timeline-item {
     background-color: #fff;
     padding: 2rem;
     border-radius: 10px;
@@ -266,18 +264,18 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.timeline-item:hover {
+.myowen .timeline-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.timeline-item h3 {
+.myowen .timeline-item h3 {
     font-size: 1.8rem;
     color: var(--secondary-color);
     margin-bottom: 1rem;
 }
 
-.timeline-item p {
+.myowen .timeline-item p {
     font-size: 1.1rem;
     line-height: 1.6;
 }
@@ -288,7 +286,7 @@
         justify-content: space-evenly;
     }
 
-    .timeline-item {
+    .myowen .timeline-item {
         width: 30%;
     }
 }

@@ -1,7 +1,5 @@
-@import "style.css";
-
 /* Event Header Styles */
-.event-header {
+.myowen .event-header {
     background: url("../images/575a1ed4-6159-40d3-a54e-ca54ba54c3fd.webp") center no-repeat;
     color: var(--white-color);
     text-align: center;
@@ -14,7 +12,7 @@
     position: relative;
 }
 
-.event-header::before {
+.myowen .event-header::before {
     content: "";
     position: absolute;
     top: 0;
@@ -24,14 +22,14 @@
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
 }
 
-.event-header h1 {
+.myowen .event-header h1 {
     position: relative;
     font-size: 4rem;
     text-transform: uppercase;
     margin-bottom: 16px;
 }
 
-.event-header p {
+.myowen .event-header p {
     position: relative;
     z-index: 2;
     font-size: 1.2rem;
@@ -39,113 +37,113 @@
     font-weight: 300;
 }
 
-.about-event {
+.myowen .about-event {
     text-align: center;
     padding: 4rem 0;
 }
 
-.about-event h3 {
+.myowen .about-event h3 {
     font-size: 2em;
     margin-bottom: 2rem;
 }
 
-.about-event p {
+.myowen .about-event p {
     max-width: 600px;
     line-height: 1.2rem;
     margin: 0 auto 1rem;
     color: var(--text-dark);
 }
 
-.about-event blockquote {
+.myowen .about-event blockquote {
     font-style: italic;
 }
 
-.circuit-details {
+.myowen .myowen .circuit-details {
     width: 100%;
     padding: 4rem 0;
     background-color: var(--white-color);
 }
 
-.circuit-details h3 {
+.myowen .myowen .circuit-details h3 {
     font-size: 2rem;
     margin-bottom: 1.1rem;
     color: var(--primary-color);
 }
 
-.circuit-details p {
+.myowen .myowen .circuit-details p {
     font-size: 1.2rem;
     margin-bottom: 1rem;
 }
 
-.circuit-details .circuit-places h4 {
+.myowen .myowen .circuit-detailit.circuit-places h4 {
     font-size: 1rem;
     margin-bottom: 1rem;
 }
 
 
-.circuit-details .circuit-places ul {
+.myowen .myowen .circuit-detailit.circuit-places ul {
     list-style: inside;
     font-size: 1.2rem;
     line-height: 1.5rem;
     font-weight: normal;
 }
 
-.circuit {
+.myowen .circuit {
     width: 100%;
 }
 
-.circuit .circuit-info {
+.myowen .circuit .circuit-info {
     padding: 4rem 0;
 }
 
-.circuit .circuit-info .container {
+.myowen .circuit .circuit-info .container {
     display: flex;
     flex-direction: row;
     gap: 2rem;
 }
 
-.circuit .circuit-info:nth-child(2n) {
+.myowen .circuit .circuit-info:nth-child(2n) {
     background-color: var(--white-color);
 }
 
-.circuit .circuit-info:nth-child(2n) .container {
+.myowen .circuit .circuit-info:nth-child(2n) .container {
     flex-direction: row-reverse;
 }
 
-.circuit .circuit-info:nth-child(2n) h4 {
+.myowen .circuit .circuit-info:nth-child(2n) h4 {
     color: var(--primary-color);
 }
 
-.circuit .circuit-info img {
+.myowen .circuit .circuit-info img {
     width: 100%;
     max-width: 500px;
     object-fit: cover;
 }
 
-.circuit .circuit-info div {
+.myowen .circuit .circuit-info div {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
-.circuit .circuit-info div h4 {
+.myowen .circuit .circuit-info div h4 {
     font-size: 2em;
     color: var(--secondary-color);
     margin-bottom: 1rem;
 }
 
-.circuit .circuit-info div p {
+.myowen .circuit .circuit-info div p {
     text-align: justify;
     line-height: 1.2rem;
 }
 
 @media (max-width: 768px) {
-    .circuit .circuit-info .container {
+    .myowen .circuit .circuit-info .container {
         flex-direction: column;
         align-items: center;
     }
 
-    .circuit .circuit-info:nth-child(2n) .container {
+    .myowen .circuit .circuit-info:nth-child(2n) .container {
         flex-direction: column-reverse;
         align-items: center;
     }

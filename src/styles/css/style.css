@@ -1,11 +1,10 @@
-@import url(home.css);
-@import url(about.css);
-@import url(contact.css);
-@import url(event-detail.css);
-@import url(events.css);
-@import url(gallery.css);
-@import url(main.css);
-@import url(uicons-brands.css);
+@import "./home.css";
+@import "./about.css";
+@import "./contact.css";
+@import "./event-detail.css";
+@import "./events.css";
+@import "./gallery.css";
+@import "./uicons-brands.css";
 
 @font-face {
   font-family: "League Spartan";
@@ -21,12 +20,9 @@
   --text-dark: #333;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+html {
+  scroll-behavior: smooth;
 }
-html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-family-league), serif;
@@ -34,15 +30,15 @@ body {
 }
 
 /* Links */
-a {
+.myowen a {
   text-decoration: none;
 }
 
-ul {
+.myowen ul {
   list-style: none;
 }
 
-.btn {
+.myowen .btn {
   color: var(--white-color);
   padding: 10px 15px;
   border-radius: 5px;
@@ -51,32 +47,32 @@ ul {
   transition: background 0.3s ease;
 }
 
-.text-small {
+.myowen .text-small {
   font-size: 1rem;
   color: gray;
-  font-style: italic  ;
+  font-style: italic;
 }
 
-.btn-primary {
+.myowen .btn-primary {
   background: var(--primary-color);
 }
 
-.btn-secondary {
+.myowen .btn-secondary {
   background: var(--secondary-color);
 }
 
-.btn-secondary:hover {
+.myowen .btn-secondary:hover {
   background: var(--primary-color);
 }
 
-.btn-primary:hover {
+.myowen .btn-primary:hover {
   background: var(--secondary-color);
 }
 
-.container {
+.myowen .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px;
 }
 
 /* Start Top Bar Styling */
@@ -184,7 +180,7 @@ header .main-header .burger-menu.active .line:nth-child(3) {
 /* End Main Header Styling */
 
 /*Start footer styling*/
-.footer {
+.myowen .footer {
   background-color: black;
   color: white;
   padding: 40px 20px 0;
@@ -192,7 +188,7 @@ header .main-header .burger-menu.active .line:nth-child(3) {
   position: relative;
 }
 
-.footer::before {
+.myowen .footer::before {
   position: absolute;
   content: "";
   top: 0;
@@ -204,31 +200,31 @@ header .main-header .burger-menu.active .line:nth-child(3) {
   pointer-events: none; /* Ensures clicks pass through this layer */
 }
 
-.footer .footer-content {
+.myowen .footer .footer-content {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
 }
 
-.footer .footer-content .logo {
+.myowen .footer .footer-content .logo {
   width: 150px;
   margin-bottom: 10px;
 }
 
-.footer .footer-content .footer-title {
+.myowen .footer .footer-content .footer-title {
   font-size: 1.2em;
   margin-bottom: 15px;
   color: var(--primary-color);
 }
 
-.footer .footer-content .links-col,
-.footer .footer-content .social-col {
+.myowen .footer .footer-content .links-col,
+.myowen .footer .footer-content .social-col {
   display: flex;
   flex-direction: column;
 }
 
-.footer .footer-content .footer-links,
-.footer .footer-content .social-links {
+.myowen .footer .footer-content .footer-links,
+.myowen .footer .footer-content .social-links {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -237,29 +233,29 @@ header .main-header .burger-menu.active .line:nth-child(3) {
   gap: 10px;
 }
 
-.footer .footer-content .footer-links li a,
-.social-links li a {
+.myowen .footer .footer-content .footer-links li a,
+.myowen .social-links li a {
   color: white;
 }
 
-.footer .footer-content .footer-links li a:hover,
-.footer .footer-content .social-links li a:hover {
+.myowen .footer .footer-content .footer-links li a:hover,
+.myowen .footer .footer-content .social-links li a:hover {
   text-decoration: underline;
 }
 
-footer .footer-content .social-links i {
+.myowen footer .footer-content .social-links i {
   font-size: 1.2em;
 }
 
-.footer .footer-content .facebook-icon i {
+.myowen .footer .footer-content .facebook-icon i {
   color: #1877f2;
 }
 
-.footer .footer-content .twitter-icon i {
+.myowen .footer .footer-content .twitter-icon i {
   color: #1da1f2;
 }
 
-.footer .footer-content .instagram-icon i {
+.myowen .footer .footer-content .instagram-icon i {
   background: linear-gradient(
     135deg,
     #feda75,
@@ -271,11 +267,11 @@ footer .footer-content .social-links i {
   display: inline-block;
 }
 
-.footer .footer-content .linkedin-icon i {
+.myowen .footer .footer-content .linkedin-icon i {
   color: #0077b5;
 }
 
-.footer .footer__copyright {
+.myowen .footer .footer__copyright {
   margin-top: 40px;
   border-top: 1px solid var(--primary-color);
   text-align: center;

@@ -1,38 +1,36 @@
-@import "style.css";
-
 /* Map Section */
 
-.map-section {
+.myowen .map-section {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.map-section .content {
+.myowen .map-section .content {
     position: absolute;
     color: var(--white-color);
     text-align: center;
 }
 
-.map-section h2 {
+.myowen .map-section h2 {
     font-size: 4rem;
     text-transform: uppercase;
     margin-bottom: 16px;
 }
 
-.map-section p {
+.myowen .map-section p {
     font-size: 1.4rem;
 }
 
-.map-section .btn {
+.myowen .map-section .btn {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 1.2rem;
 }
 
-.map-section::before {
+.myowen .map-section::before {
     position: absolute;
     left: 0;
     top: 0;
@@ -42,18 +40,18 @@
     height: 100%;
 }
 
-.map-section iframe {
+.myowen .map-section iframe {
     width: 100%;
     height: 81vh;
 }
 
 /*Start contact.css style*/
-.contact-section {
+.myowen .contact-section {
     padding: 80px 20px;
     position: relative;
 }
 
-.contact-section::before {
+.myowen .contact-section::before {
     position: absolute;
     left: 0;
     top: 0;
@@ -66,33 +64,33 @@
     opacity: 0.8;
 }
 
-.contact-section h2 {
+.myowen .contact-section h2 {
     text-align: center;
     font-size: 2.5em;
     margin-bottom: 10px;
     color: var(--secondary-color);
 }
 
-.contact-section .contact-intro {
+.myowen .contact-section .contact-intro {
     text-align: center;
     font-size: 1.2em;
     margin-bottom: 40px;
 }
 
-.contact-section .contact-content {
+.myowen .contact-section .contact-content {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 30px;
 }
 
-.contact-section .contact-cards {
+.myowen .contact-section .contact-cards {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
 }
 
-.contact-section .contact-card {
+.myowen .contact-section .contact-card {
     display: flex;
     gap: 30px;
     padding: 20px;
@@ -101,12 +99,12 @@
     box-shadow: 0 4px 25px 0 #0000000f;
 }
 
-.contact-section .contact-card img {
+.myowen .contact-section .contact-card img {
     width: 50px;
     height: 50px;
 }
 
-.contact-section .contact-card h3 {
+.myowen .contact-section .contact-card h3 {
     font-size: 1.3em;
     margin-bottom: 10px;
     color: var(--primary-color);
@@ -114,11 +112,11 @@
     letter-spacing: 1px;
 }
 
-.contact-section .contact-card p, .contact-section .contact-card a {
+.myowen .contact-section .contact-card p, .myowen .contact-section .contact-card a {
     color: var(--text-dark);
 }
 
-.contact-section .contact-form {
+.myowen .contact-section .contact-form {
     padding: 0 30px;
     border-radius: 8px;
     display: flex;
@@ -126,19 +124,19 @@
     justify-content: space-between;
 }
 
-.contact-section .contact-form .form-group {
+.myowen .contact-section .contact-form .form-group {
     margin-bottom: 20px;
 }
 
-.contact-section .contact-form .form-group label {
+.myowen .contact-section .contact-form .form-group label {
     display: block;
     margin-bottom: 5px;
     font-size: 1.1em;
     color: var(--text-dark);
 }
 
-.contact-section .contact-form .form-group input,
-.contact-section .contact-form .form-group textarea {
+.myowen .contact-section .contact-form .form-group input,
+.myowen .contact-section .contact-form .form-group textarea {
     width: 100%;
     padding: 10px;
     font-size: 1em;
@@ -148,15 +146,15 @@
     font-family: var(--font-family-league), sans-serif;
 }
 
-.contact-section .contact-form .form-group input:focus,
-.contact-section .contact-form .form-group textarea:focus {
+.myowen .contact-section .contact-form .form-group input:focus,
+.myowen .contact-section .contact-form .form-group textarea:focus {
     outline: none;
     border: none;
     border-color: var(--secondary-color);
     box-shadow: 0 0 5px var(--secondary-color);
 }
 
-.contact-section .contact-form .btn {
+.myowen .contact-section .contact-form .btn {
     padding: 10px 20px;
     font-weight: bold;
     border: none;
@@ -165,16 +163,16 @@
 
 /*End contact.css section*/
 @media (max-width: 768px) {
-    .contact-section .contact-content {
+    .myowen .contact-section .contact-content {
         grid-template-columns: 1fr;
     }
 
-    .contact-section .contact-content .contact-cards {
+    .myowen .contact-section .contact-content .contact-cards {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
-    .contact-section .contact-form {
+    .myowen .contact-section .contact-form {
         padding: 0;
     }
 }

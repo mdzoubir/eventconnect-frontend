@@ -19,13 +19,13 @@ const ContactSection: React.FC = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting }
+    formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
     defaultValues: {
       name: "",
       email: "",
-      message: ""
-    }
+      message: "",
+    },
   });
 
   const onSubmit = async (data: ContactFormData) => {
@@ -94,8 +94,8 @@ const ContactSection: React.FC = () => {
                 label="Name"
                 id="name"
                 type="text"
-                register={register("name", { 
-                  required: "Name is required" 
+                register={register("name", {
+                  required: "Name is required",
                 })}
                 error={errors.name?.message}
               />
@@ -108,8 +108,8 @@ const ContactSection: React.FC = () => {
                   required: "Email is required",
                   pattern: {
                     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                    message: "Please enter a valid email address"
-                  }
+                    message: "Please enter a valid email address",
+                  },
                 })}
                 error={errors.email?.message}
               />
@@ -120,17 +120,19 @@ const ContactSection: React.FC = () => {
                   id="message"
                   placeholder="Your Message"
                   rows={5}
-                  {...register("message", { 
-                    required: "Message is required" 
+                  {...register("message", {
+                    required: "Message is required",
                   })}
                 ></textarea>
                 {errors.message && (
-                  <p className="text-red-500 text-sm">{errors.message.message}</p>
+                  <p className="text-red-500 text-sm">
+                    {errors.message.message}
+                  </p>
                 )}
               </div>
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="btn btn-secondary"
                 disabled={isSubmitting}
               >

@@ -1,7 +1,5 @@
-@import "style.css";
-
-/* Start hero section */
-.hero {
+/* Start.myowen .herosection */
+.myowen .hero {
   position: relative;
   background: url("../../assets/images/morocco-desert-camp-2048x682.jpg.webp")
     no-repeat center center/cover;
@@ -12,7 +10,7 @@
   z-index: 1;
 }
 
-.hero::before {
+.myowen .hero::before {
   content: "";
   position: absolute;
   top: 0;
@@ -23,36 +21,36 @@
   z-index: -1;
 }
 
-.hero .hero-content {
+.myowen .hero .hero-content {
   text-align: center;
   padding: 200px 40px;
 }
 
-.hero .hero-content h1 {
+.myowen .hero .hero-content h1 {
   font-size: 3.5em;
   margin-bottom: 20px;
   font-weight: bold;
   line-height: 1.2;
 }
 
-.hero .hero-content p {
+.myowen .hero .hero-content p {
   font-size: 1.2em;
   margin-bottom: 40px;
   line-height: 1.6;
 }
 
-.hero .hero-content .btn {
+.myowen .hero .hero-content .btn {
   padding: 15px 30px;
 }
 
-/*End hero section */
+/*End.myowen .herosection */
 
-/* Start about section */
-.about {
+/* Start.myowen .aboutsection */
+.myowen .about  {
   padding: 50px 20px;
 }
 
-.about .about-content {
+.myowen .about .about-content {
   position: relative;
   display: flex;
   align-items: center;
@@ -60,7 +58,7 @@
   justify-content: space-between;
 }
 
-.about .about-content::before {
+.myowen .about .about-content::before {
   content: "";
   position: absolute;
   background: url("../../assets/images/svg/gears-spinner.svg") no-repeat top
@@ -72,20 +70,20 @@
   height: 100px;
 }
 
-.about .about-content .images {
+.myowen .about .about-content .images {
   max-width: 50%;
   position: relative;
 }
 
-.about .about-content .images .image-primary,
-.about .about-content .images .image-secondary {
+.myowen .about .about-content .images .image-primary,
+.myowen .about .about-content .images .image-secondary {
   width: 70%;
   border-radius: 10px;
   border: 6px solid var(--white-color);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
 }
 
-.about .about-content .images .image-secondary {
+.myowen .about .about-content .images .image-secondary {
   width: 50%;
   height: 70%;
   position: absolute;
@@ -93,12 +91,12 @@
   bottom: 40px;
 }
 
-.about .about-content .text-part {
+.myowen .about .about-content .text-part {
   max-width: 500px;
   text-align: left;
 }
 
-.about .about-content .text-part h5 {
+.myowen .about .about-content .text-part h5 {
   color: var(--secondary-color);
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -106,45 +104,45 @@
   font-size: 1.1em;
 }
 
-.about .about-content .text-part h2 {
+.myowen .about .about-content .text-part h2 {
   font-size: 2.5em;
   margin-bottom: 20px;
   line-height: 1.2;
 }
 
-.about .about-content .text-part p {
+.myowen .about .about-content .text-part p {
   font-size: 1.2em;
   margin-bottom: 40px;
   line-height: 1.4;
   color: var(--text-dark);
 }
 
-.about .about-content .text-part .btn {
+.myowen .about .about-content .text-part .btn {
   padding: 15px 30px;
 }
 
-/* End the About Section */
+/* End the.myowen .aboutSection */
 
 /* Start events section style */
-.featured-events {
+.myowen .featured-events {
   padding: 60px 20px;
   background-color: var(--white-color);
 }
 
-.featured-events h2 {
+.myowen .featured-events h2 {
   font-size: 2.8em;
   text-align: center;
   margin-bottom: 40px;
   color: var(--secondary-color);
 }
 
-.featured-events .event-list {
+.myowen .featured-events .event-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 30px;
 }
 
-.featured-events .event-item {
+.myowen .featured-events .event-item {
   display: flex;
   /* gap: 20px; */
   background-color: #fff;
@@ -153,35 +151,35 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.featured-events .event-item:hover {
+.myowen .featured-events .event-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-.featured-events .event-item img {
+.myowen .featured-events .event-item img {
   width: 200px;
   object-fit: cover;
   border-radius: 12px 0 0 12px;
 }
 
-.featured-events .event-details {
+.myowen .featured-events .event-details {
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-.featured-events .view-all {
+.myowen .featured-events .view-all {
   margin-top: 20px;
 }
 
-.event-details h3 {
+.myowen .event-details h3 {
   font-size: 1.5em;
   margin-bottom: 10px;
   color: var(--secondary-color);
   font-weight: 600;
 }
 
-.featured-events .event-details h5 {
+.myowen .featured-events .event-details h5 {
   color: var(--primary-color);
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -189,14 +187,14 @@
   font-size: 1em;
 }
 
-.featured-events .event-details p {
+.myowen .featured-events .event-details p {
   font-size: 1em;
   margin-bottom: 15px;
   color: var(--text-dark);
   line-height: 1.4;
 }
 
-.featured-events .event-details .btn {
+.myowen .featured-events .event-details .btn {
   padding: 10px 20px;
   width: max-content;
 }
@@ -204,82 +202,82 @@
 /*End Event style section*/
 
 /* Start Open Doors Section Styling */
-.open-doors-difference {
+.myowen .open-doors-difference {
   padding: 60px 20px;
 }
 
-.open-doors-difference h2 {
+.myowen .open-doors-difference h2 {
   font-size: 2.8em;
   margin-bottom: 20px;
   color: var(--secondary-color);
 }
 
-.open-doors-difference .intro-text {
+.myowen .open-doors-difference .intro-text {
   font-size: 1.2em;
   margin-bottom: 40px;
   color: var(--text-dark);
 }
 
-.open-doors-difference .difference-grid {
+.myowen .open-doors-difference .difference-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
 }
 
-.open-doors-difference .difference-item {
+.myowen .open-doors-difference .difference-item {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.open-doors-difference .difference-item:hover {
+.myowen .open-doors-difference .difference-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-.open-doors-difference .difference-item h3 {
+.myowen .open-doors-difference .difference-item h3 {
   font-size: 1.6em;
   margin-bottom: 15px;
   color: var(--primary-color);
 }
 
-.open-doors-difference .difference-item p {
+.myowen .open-doors-difference .difference-item p {
   line-height: 1.6;
   color: var(--text-dark);
 }
 
-.open-doors-difference .actions {
+.myowen .open-doors-difference .actions {
   text-align: right;
   margin-top: 40px;
 }
 
-.actions .btn {
+.myowen .actions .btn {
   padding: 12px 25px;
   margin: 10px;
 }
 
 /*End Open door section style*/
 
-/*Start testimonials style*/
-.testimonials {
+/*Start.myowen .testimonials style*/
+.myowen .testimonials {
   padding: 60px 0;
   background-color: var(--white-color);
 }
 
-.testimonials h2 {
+.myowen .testimonials h2 {
   font-size: 2.5em;
   margin-bottom: 40px;
   color: var(--secondary-color);
 }
 
-.testimonials .testimonial-list {
+.myowen .testimonials .testimonial-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
 
-.testimonials .testimonial-item {
+.myowen .testimonials .testimonial-item {
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -290,37 +288,37 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.testimonials .testimonial-item:hover {
+.myowen .testimonials .testimonial-item:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   transform: translateY(-5px);
 }
 
-.testimonials .testimonial-item blockquote {
+.myowen .testimonials .testimonial-item blockquote {
   font-style: italic;
   color: var(--text-dark);
   line-height: 1.6;
 }
 
-.testimonials .testimonial-item footer {
+.myowen .testimonials .testimonial-item footer {
   margin-top: 15px;
   font-weight: bold;
   color: var(--primary-color);
 }
 
-.testimonials .testimonial-item.large-item {
+.myowen .testimonials .testimonial-item.large-item {
   grid-row: span 2;
   grid-column: span 1;
 }
 
-/*End Testimonials style*/
+/*End.myowen .testimonials style*/
 
 /*Start contact.css style*/
-.contact-section {
+.myowen .contact-section {
   padding: 80px 20px;
   position: relative;
 }
 
-.contact-section::before {
+.myowen .contact-section::before {
   position: absolute;
   left: 0;
   top: 0;
@@ -333,33 +331,33 @@
   opacity: 0.8;
 }
 
-.contact-section h2 {
+.myowen .contact-section h2 {
   text-align: center;
   font-size: 2.5em;
   margin-bottom: 10px;
   color: var(--secondary-color);
 }
 
-.contact-section .contact-intro {
+.myowen .contact-section .contact-intro {
   text-align: center;
   font-size: 1.2em;
   margin-bottom: 40px;
 }
 
-.contact-section .contact-content {
+.myowen .contact-section .contact-content {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 30px;
 }
 
-.contact-section .contact-cards {
+.myowen .contact-section .contact-cards {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
 }
 
-.contact-section .contact-card {
+.myowen .contact-section .contact-card {
   display: flex;
   gap: 30px;
   padding: 20px;
@@ -368,12 +366,12 @@
   box-shadow: 0 4px 25px 0 #0000000f;
 }
 
-.contact-section .contact-card img {
+.myowen .contact-section .contact-card img {
   width: 50px;
   height: 50px;
 }
 
-.contact-section .contact-card h3 {
+.myowen .contact-section .contact-card h3 {
   font-size: 1.3em;
   margin-bottom: 10px;
   color: var(--primary-color);
@@ -381,12 +379,12 @@
   letter-spacing: 1px;
 }
 
-.contact-section .contact-card p,
-.contact-section .contact-card a {
+.myowen .contact-section .contact-card p,
+.myowen .contact-section .contact-card a {
   color: var(--text-dark);
 }
 
-.contact-section .contact-form {
+.myowen .contact-section .contact-form {
   padding: 0 30px;
   border-radius: 8px;
   display: flex;
@@ -394,19 +392,19 @@
   justify-content: space-between;
 }
 
-.contact-section .contact-form .form-group {
+.myowen .contact-section .contact-form .form-group {
   margin-bottom: 20px;
 }
 
-.contact-section .contact-form .form-group label {
+.myowen .contact-section .contact-form .form-group label {
   display: block;
   margin-bottom: 5px;
   font-size: 1.1em;
   color: var(--text-dark);
 }
 
-.contact-section .contact-form .form-group input,
-.contact-section .contact-form .form-group textarea {
+.myowen .contact-section .contact-form .form-group input,
+.myowen .contact-section .contact-form .form-group textarea {
   width: 100%;
   padding: 10px;
   font-size: 1em;
@@ -416,15 +414,15 @@
   font-family: var(--font-family-league), sans-serif;
 }
 
-.contact-section .contact-form .form-group input:focus,
-.contact-section .contact-form .form-group textarea:focus {
+.myowen .contact-section .contact-form .form-group input:focus,
+.myowen .contact-section .contact-form .form-group textarea:focus {
   outline: none;
   border: none;
   border-color: var(--secondary-color);
   box-shadow: 0 0 5px var(--secondary-color);
 }
 
-.contact-section .contact-form .btn {
+.myowen .contact-section .contact-form .btn {
   padding: 10px 20px;
   font-weight: bold;
   border: none;
@@ -432,81 +430,82 @@
 }
 
 /* Subscription Section */
-.subscription-section {
+.myowen .subscription-section {
   background: var(--primary-color);
   padding: 50px 20px;
   text-align: center;
 }
 
-.subscription-section h2 {
+.myowen .subscription-section h2 {
   font-size: 2rem;
   margin-bottom: 10px;
   color: var(--secondary-color);
 }
 
-.subscription-section p {
+.myowen .subscription-section p {
   font-size: 1rem;
   margin-bottom: 20px;
   color: var(--text-dark);
 }
 
-.subscription-form {
+.myowen .subscription-form {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
 
-form.w-full input[type="email"] {
+.myowen form.w-full input[type="email"] {
   padding: 10px 15px;
   font-size: 1rem;
   border-radius: 4px;
   flex: 1;
-  max-width: 400px;
+  min-width: 250px;
+  width: 60%;
 }
 
-form button {
+.myowen form button {
   border: none;
   cursor: pointer;
 }
 
 /*Start responsive design*/
 @media (max-width: 1024px) {
-  .testimonials .testimonial-list {
+  .myowen .testimonials .testimonial-list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .about .about-content {
+  .myowen .about .about-content {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
-  .about .about-content .images {
+  .myowen .about .about-content .images {
     width: 100%;
     position: static;
   }
 
-  .about .about-content .images .image-secondary {
+  .myowen .about .about-content .images .image-secondary {
     position: static;
     width: 100%;
   }
 
-  .about .about-content .images .image-primary {
+  .myowen .about .about-content .images .image-primary {
     display: none;
   }
 
-  .about .about-content .text-part {
+  .myowen .about .about-content .text-part {
     max-width: 100%;
   }
 
-  .open-doors-difference .difference-item {
+  .myowen .open-doors-difference .difference-item {
     padding: 15px;
   }
 
-  .open-doors-difference .actions .btn {
+  .myowen .open-doors-difference .actions .btn {
     padding: 10px 20px;
     display: block;
     width: max-content;
@@ -514,34 +513,34 @@ form button {
     margin: 10px auto;
   }
 
-  .testimonials .testimonial-list {
+  .myowen .testimonials .testimonial-list {
     grid-template-columns: 1fr;
   }
 
-  .contact-section .contact-content {
+  .myowen .contact-section .contact-content {
     grid-template-columns: 1fr;
   }
 
-  .contact-section .contact-content .contact-cards {
+  .myowen .contact-section .contact-content .contact-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 
-  .contact-section .contact-form {
+  .myowen .contact-section .contact-form {
     padding: 0;
   }
 }
 
 @media (max-width: 580px) {
-  .featured-events .event-list {
+  .myowen .featured-events .event-list {
     grid-template-columns: 1fr;
   }
 
-  .featured-events .event-item {
+  .myowen .featured-events .event-item {
     flex-direction: column;
   }
 
-  .featured-events .event-item img {
+  .myowen .featured-events .event-item img {
     width: 100%;
     border-radius: 12px 12px 0 0;
   }

@@ -39,7 +39,7 @@ const Subscribe = () => {
           className=" w-full sm:w-auto flex flex-row items-start gap-4 justify-center"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="w-full sm:w-auto flex flex-col">
+          <div className="w-full sm:w-auto flex flex-col ">
             <input
               type="email"
               placeholder="Enter your email address"
