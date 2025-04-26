@@ -1,18 +1,68 @@
 "use client";
 
-import type React from "react";
 import { useState } from "react";
 import { EyeIcon, EyeOffIcon, ArrowLeftIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { jwtDecode } from "jwt-decode";
+import { login } from "../api/endpoints/authApi";
+import { LoginData } from "../types/auth.types";
+import { useNavigate } from "react-router-dom";
+
+interface DecodedToken {
+  role: "user" | "organizer" | "admin";
+}
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle login logic here
-    console.log({ email, password });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginData>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const onSubmit = async (data: LoginData) => {
+    try {
+      const { access, refresh } = await login(data);
+
+      // Save tokens to localStorage
+      localStorage.setItem("accessToken", access);
+      localStorage.setItem("refreshToken", refresh);
+
+      // Decode token
+      const decoded = jwtDecode<DecodedToken>(access);
+      const role = decoded.role;
+
+      // Redirect based on role
+      switch (role) {
+        case "admin":
+          navigate("/admin/dashboard");
+          break;
+        case "organizer":
+          navigate("/organizer/dashboard");
+          break;
+        case "user":
+          navigate("/dashboard");
+          break;
+        default:
+          toast.error("Unknown role type", { position: "top-center" });
+      }
+
+      toast.success("Login successful!", { position: "top-center" });
+    } catch (error: any) {
+      if (error.response?.status === 401) {
+        toast.error("Incorrect email or password.", { position: "top-center" });
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    }
   };
 
   return (
@@ -31,8 +81,9 @@ const Login = () => {
             Enter your email and password to sign in to your account
           </p>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <div className="space-y-4">
+            {/* Email Field */}
             <div className="space-y-2">
               <label
                 htmlFor="email"
@@ -44,17 +95,28 @@ const Login = () => {
                 id="email"
                 type="email"
                 placeholder="name@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Invalid email address",
+                  },
+                })}
+                className={`w-full rounded-md border ${
+                  errors.email ? "border-red-500" : "border-gray-300"
+                } px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
               />
+              {errors.email && (
+                <p className="text-sm text-red-600">{errors.email.message}</p>
+              )}
             </div>
+
+            {/* Password Field */}
             <div className="space-y-2">
-              <div className="flex items-center justify-between">
+              <div className="flex justify-between">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium text-gray-700"
+                  className="text-sm font-medium text-gray-700"
                 >
                   Password
                 </label>
@@ -67,16 +129,17 @@ const Login = () => {
                   id="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  {...register("password", {
+                    required: "Password is required",
+                  })}
+                  className={`w-full rounded-md border ${
+                    errors.password ? "border-red-500" : "border-gray-300"
+                  } px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
                 />
                 <button
                   type="button"
                   className="absolute right-0 top-0 flex h-full items-center px-3 text-gray-400 hover:text-gray-600"
                   onClick={() => setShowPassword(!showPassword)}
-                  aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (
                     <EyeOffIcon className="h-4 w-4" />
@@ -85,25 +148,24 @@ const Login = () => {
                   )}
                 </button>
               </div>
+              {errors.password && (
+                <p className="text-sm text-red-600">
+                  {errors.password.message}
+                </p>
+              )}
             </div>
-            <div className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id="remember"
-                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-              />
-              <label htmlFor="remember" className="text-sm text-gray-700">
-                Remember me
-              </label>
-            </div>
+
+            {/* Submit */}
             <button
               type="submit"
-              className="w-full rounded-md bg-blue-600 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              disabled={isSubmitting}
+              className="w-full rounded-md bg-blue-600 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-70"
             >
-              Sign in
+              {isSubmitting ? "Signing in..." : "Sign in"}
             </button>
           </div>
         </form>
+
         <div className="mt-6 text-center text-sm text-gray-500">
           Don't have an account?{" "}
           <a href="#" className="text-blue-600 hover:underline">

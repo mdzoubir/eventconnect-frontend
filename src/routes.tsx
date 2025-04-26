@@ -5,17 +5,19 @@ import Events from "./pages/Events";
 import Contact from "./pages/Contact";
 import Register from "./pages/Register";
 import LoginPage from "./pages/Login";
-import Dashboard from "./pages/admin/Dashboard";
-import Users from "./pages/admin/Users";
+import Dashboard from "./pages/organizer/Dashboard";
+import Users from "./pages/organizer/Users";
 import { Toaster } from "react-hot-toast";
 
 import MainLayout from "./layouts/MainLayout";
-import AdminLayout from "./layouts/AdminLayout";
+import OrganizerLayout from "./layouts/OrganizerLayout";
 
 // Import CSS
 import "./styles/admin.css";
 import "./styles/admin-components.css";
 import "./styles/user-dashboard.css";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import PublicRoute from "./components/auth/PublicRoute";
 
 const AppRoutes = () => {
   return (
@@ -77,23 +79,34 @@ const AppRoutes = () => {
           }
         />
 
-        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
 
         {/* Admin Pages */}
         <Route
-          path="/admin/dashboard"
+          path="/organizer/dashboard"
           element={
-            <AdminLayout>
-              <Dashboard />
-            </AdminLayout>
+            <ProtectedRoute>
+              <OrganizerLayout>
+                <Dashboard />
+              </OrganizerLayout>
+            </ProtectedRoute>
           }
         />
         <Route
-          path="/admin/users"
+          path="/organizer/users"
           element={
-            <AdminLayout>
-              <Users />
-            </AdminLayout>
+            <ProtectedRoute>
+              <OrganizerLayout>
+                <Users />
+              </OrganizerLayout>
+            </ProtectedRoute>
           }
         />
       </Routes>

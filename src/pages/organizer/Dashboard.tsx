@@ -1,5 +1,5 @@
 import React from "react";
-import AdminLayout from "../../components/admin/AdminLayout";
+import AdminLayout from "../../components/organizer/OrganizerLayout";
 
 const AdminDashboard: React.FC = () => {
   return (

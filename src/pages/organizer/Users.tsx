@@ -1,33 +1,70 @@
 // src/pages/admin/Users.tsx
-import React, { useState } from 'react';
-import AdminLayout from '../../components/admin/AdminLayout';
+import React, { useState } from "react";
+import AdminLayout from "../../components/organizer/OrganizerLayout";
 
 // Mock data - replace with API calls
 const mockUsers = [
-  { id: 1, name: 'Ahmed Hassan', email: 'ahmed@example.com', role: 'User', status: 'Active', joinDate: 'Apr 10, 2025' },
-  { id: 2, name: 'Fatima El Alaoui', email: 'fatima@example.com', role: 'Admin', status: 'Active', joinDate: 'Apr 9, 2025' },
-  { id: 3, name: 'Mohammed Berrada', email: 'mohammed@example.com', role: 'User', status: 'Pending', joinDate: 'Apr 8, 2025' },
-  { id: 4, name: 'Leila Bouaziz', email: 'leila@example.com', role: 'User', status: 'Active', joinDate: 'Apr 7, 2025' },
-  { id: 5, name: 'Karim Chaoui', email: 'karim@example.com', role: 'User', status: 'Inactive', joinDate: 'Apr 6, 2025' },
+  {
+    id: 1,
+    name: "Ahmed Hassan",
+    email: "ahmed@example.com",
+    role: "User",
+    status: "Active",
+    joinDate: "Apr 10, 2025",
+  },
+  {
+    id: 2,
+    name: "Fatima El Alaoui",
+    email: "fatima@example.com",
+    role: "Admin",
+    status: "Active",
+    joinDate: "Apr 9, 2025",
+  },
+  {
+    id: 3,
+    name: "Mohammed Berrada",
+    email: "mohammed@example.com",
+    role: "User",
+    status: "Pending",
+    joinDate: "Apr 8, 2025",
+  },
+  {
+    id: 4,
+    name: "Leila Bouaziz",
+    email: "leila@example.com",
+    role: "User",
+    status: "Active",
+    joinDate: "Apr 7, 2025",
+  },
+  {
+    id: 5,
+    name: "Karim Chaoui",
+    email: "karim@example.com",
+    role: "User",
+    status: "Inactive",
+    joinDate: "Apr 6, 2025",
+  },
 ];
 
 const UsersPage: React.FC = () => {
   const [users, setUsers] = useState(mockUsers);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterStatus, setFilterStatus] = useState('All');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterStatus, setFilterStatus] = useState("All");
 
   // Filter users based on search term and status filter
-  const filteredUsers = users.filter(user => {
-    const matchesSearch = user.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          user.email.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesStatus = filterStatus === 'All' || user.status === filterStatus;
+  const filteredUsers = users.filter((user) => {
+    const matchesSearch =
+      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesStatus =
+      filterStatus === "All" || user.status === filterStatus;
     return matchesSearch && matchesStatus;
   });
 
   // Handle user deletion
   const handleDeleteUser = (id: number) => {
-    if (window.confirm('Are you sure you want to delete this user?')) {
-      setUsers(users.filter(user => user.id !== id));
+    if (window.confirm("Are you sure you want to delete this user?")) {
+      setUsers(users.filter((user) => user.id !== id));
     }
   };
 
@@ -41,16 +78,16 @@ const UsersPage: React.FC = () => {
 
         <div className="filters">
           <div className="search-bar">
-            <input 
-              type="text" 
-              placeholder="Search users..." 
+            <input
+              type="text"
+              placeholder="Search users..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          
+
           <div className="status-filter">
-            <select 
+            <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
             >
@@ -76,7 +113,7 @@ const UsersPage: React.FC = () => {
             </thead>
             <tbody>
               {filteredUsers.length > 0 ? (
-                filteredUsers.map(user => (
+                filteredUsers.map((user) => (
                   <tr key={user.id}>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
@@ -89,7 +126,7 @@ const UsersPage: React.FC = () => {
                     <td>{user.joinDate}</td>
                     <td className="actions">
                       <button className="btn btn-sm btn-edit">Edit</button>
-                      <button 
+                      <button
                         className="btn btn-sm btn-delete"
                         onClick={() => handleDeleteUser(user.id)}
                       >
@@ -100,7 +137,9 @@ const UsersPage: React.FC = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={6} className="no-data">No users found</td>
+                  <td colSpan={6} className="no-data">
+                    No users found
+                  </td>
                 </tr>
               )}
             </tbody>
