@@ -1,55 +1,22 @@
-// src/pages/admin/Users.tsx
 import React, { useState } from "react";
 import AdminLayout from "../../components/organizer/OrganizerLayout";
-
-// Mock data - replace with API calls
-const mockUsers = [
-  {
-    id: 1,
-    name: "Ahmed Hassan",
-    email: "ahmed@example.com",
-    role: "User",
-    status: "Active",
-    joinDate: "Apr 10, 2025",
-  },
-  {
-    id: 2,
-    name: "Fatima El Alaoui",
-    email: "fatima@example.com",
-    role: "Admin",
-    status: "Active",
-    joinDate: "Apr 9, 2025",
-  },
-  {
-    id: 3,
-    name: "Mohammed Berrada",
-    email: "mohammed@example.com",
-    role: "User",
-    status: "Pending",
-    joinDate: "Apr 8, 2025",
-  },
-  {
-    id: 4,
-    name: "Leila Bouaziz",
-    email: "leila@example.com",
-    role: "User",
-    status: "Active",
-    joinDate: "Apr 7, 2025",
-  },
-  {
-    id: 5,
-    name: "Karim Chaoui",
-    email: "karim@example.com",
-    role: "User",
-    status: "Inactive",
-    joinDate: "Apr 6, 2025",
-  },
-];
+import useFetchUsers from "../../hooks/useFetchUsers";
+import { deleteUser } from "../../api/endpoints/userApi";
+import toast from "react-hot-toast";
+import { User } from "../../types/api.types";
 
 const UsersPage: React.FC = () => {
-  const [users, setUsers] = useState(mockUsers);
+  const [users, setUsers] = useState<User[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState("All");
+
+  // Use the users fetched by the custom hook
+  const { users: fetchedUsers, loading } = useFetchUsers();
+
+  // Update local users state when fetchedUsers change
+  React.useEffect(() => {
+    setUsers(fetchedUsers);
+  }, [fetchedUsers]);
 
   // Filter users based on search term and status filter
   const filteredUsers = users.filter((user) => {
@@ -61,10 +28,20 @@ const UsersPage: React.FC = () => {
     return matchesSearch && matchesStatus;
   });
 
-  // Handle user deletion
-  const handleDeleteUser = (id: number) => {
+  const handleDeleteUser = async (userId: number) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
-      setUsers(users.filter((user) => user.id !== id));
+      try {
+        await deleteUser(userId);
+
+        // Remove the deleted user from the local state directly
+        setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
+
+        // Show success toast
+        toast.success("User deleted successfully!");
+      } catch (error) {
+        console.error("Failed to delete user", error);
+        toast.error("Failed to delete user.");
+      }
     }
   };
 
@@ -105,25 +82,40 @@ const UsersPage: React.FC = () => {
               <tr>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Role</th>
-                <th>Status</th>
+                <th>Preferences</th>
                 <th>Join Date</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {filteredUsers.length > 0 ? (
+              {loading ? (
+                <tr className="text-center">
+                  <td colSpan={5}>Loading users...</td>
+                </tr>
+              ) : filteredUsers.length === 0 ? (
+                <tr className="text-center">
+                  <td colSpan={5}>No Users found...</td>
+                </tr>
+              ) : (
                 filteredUsers.map((user) => (
                   <tr key={user.id}>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
-                    <td>{user.role}</td>
                     <td>
-                      <span className={`badge ${user.status.toLowerCase()}`}>
-                        {user.status}
-                      </span>
+                      {Array.isArray(user.preferences) &&
+                      user.preferences.length > 0 ? (
+                        user.preferences.map((pref, index) => (
+                          <span key={index} className="badge active ml-1">
+                            {pref}
+                          </span>
+                        ))
+                      ) : (
+                        <span className="badge inactive">No preferences</span>
+                      )}
                     </td>
+
                     <td>{user.joinDate}</td>
+
                     <td className="actions">
                       <button className="btn btn-sm btn-edit">Edit</button>
                       <button
@@ -135,12 +127,6 @@ const UsersPage: React.FC = () => {
                     </td>
                   </tr>
                 ))
-              ) : (
-                <tr>
-                  <td colSpan={6} className="no-data">
-                    No users found
-                  </td>
-                </tr>
               )}
             </tbody>
           </table>
